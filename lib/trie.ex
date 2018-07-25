@@ -1,20 +1,45 @@
 defmodule Trie do
   
-  @trie_map %{}
+  @trie_map %{96781234 => ["/", [0], [-99999] ] }
   @characters ""
-
-  def add(items)  do
-       splitter = items |> split 
+  
+  def add(trie \\@trie_map, items) do
+       splitter = split(trie,items)     
   end
 
-  def split(items)  do
+  def split(trie,items)  do
      
     splitted_items = items |>String.split( "", trim: true)
                            |>Enum.map( fn(item)-> 
-                                              key = gen_unique_id()
-                                              Map.put( @trie_map,  key, [item,{},{}, 0]  )
+                                              key = gen_unique_id
+                                              add_to_trie(trie, item)                                          
                                           end )
     
+   # final_item = add_relation(splitted_items, items)
+                       
+  end
+
+  def create_trie do
+      @trie_map
+  end
+ 
+  #To do 
+  def add_to_trie(trie, item) do
+
+    key = gen_unique_id
+    Map.put( trie,  key, [item,[], [0] ]  )  
+
+  end
+  
+  def add_relation( [ ],raw_data) do 
+
+     []
+ 
+  end 
+
+  #Todo
+  def add_relation( [h | t ] = raw_trie,raw_data) do       
+ 
   end
 
   defp gen_unique_id() do
@@ -24,8 +49,8 @@ defmodule Trie do
   def show_trie(new_item) do
     new_item  
   end
-
-  #
+  
+  #Access the list
   def access(list) do
 
     Enum.each(list, fn(x) ->
