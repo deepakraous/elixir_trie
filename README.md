@@ -1,6 +1,8 @@
+[![Run on Repl.it](https://repl.it/badge/github/deepakraous/elixir_trie)](https://repl.it/github/deepakraous/elixir_trie)
+
 # Trie
 
-**TODO: Add description**
+Elixir implementation of an Ethereum trie
 
 ## Installation
 
